@@ -1,4 +1,5 @@
 public class App {
+
     public static void main(String[] args) {
         // The power of objects comes from how it enables abstraction in our code
         Greeting greeting1 = new Greeting();

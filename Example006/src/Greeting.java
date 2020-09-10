@@ -12,6 +12,6 @@ public class Greeting {
 
     @Override
     public String toString() {
-        return prefix + ", world!";
+        return prefix + ", World!";
     }
 }

@@ -9,6 +9,10 @@ public class Greeting {
         this.prefix = prefix;
     }
 
+    public void greet() {
+        throw new RuntimeException("greet() is not implemented in the base class.");
+    }
+
     public String toString() {
         return prefix + ", world!";
     }
