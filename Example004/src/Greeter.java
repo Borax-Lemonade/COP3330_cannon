@@ -18,15 +18,7 @@ public class Greeter {
     }
 
     public static String readGreeting() {
-        displayPrefixPrompt();
-        return readPrefix();
-    }
-
-    public static void displayPrefixPrompt() {
         System.out.print("Prefix? ");
-    }
-
-    public static String readPrefix() {
         return in.nextLine();
     }
 
