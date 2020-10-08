@@ -3,19 +3,14 @@ package gradebook;
 public class Assignment {
     private String name;
     private String dueDate;
+    private double weight;
     private double maxScore;
-    private double studentScore;
 
-    public Assignment(String name, String dueDate, double maxScore, double studentScore) {
-        if(name.length() > 1) {
-            this.name = name;
-        } else {
-            throw new IllegalArgumentException("A name must be at least 2 characters.");
-        }
-
+    public Assignment(String name, String dueDate, double weight, double maxScore) {
+        this.name = name;
         this.dueDate = dueDate;
+        this.weight = weight;
         this.maxScore = maxScore;
-        this.studentScore = studentScore;
     }
 
     public String getName() {
@@ -26,7 +21,11 @@ public class Assignment {
         return dueDate;
     }
 
-    public double getGrade() {
-        return studentScore / maxScore;
+    public double getWeight() {
+        return weight;
+    }
+
+    public double getMaxScore() {
+        return maxScore;
     }
 }

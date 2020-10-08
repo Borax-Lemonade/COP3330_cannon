@@ -1,2 +1,5 @@
-package PACKAGE_NAME;public interface MultiarmedBehavior {
+public interface MultiarmedBehavior {
+    default void grasp() {
+        System.out.print("Monster grasps");
+    };
 }

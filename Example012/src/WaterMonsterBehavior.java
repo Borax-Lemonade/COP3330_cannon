@@ -1,2 +1,7 @@
-package PACKAGE_NAME;public interface WaterMonsterBehavior {
+public interface WaterMonsterBehavior {
+    void attack();
+
+    void swim();
+
+    void defend();
 }

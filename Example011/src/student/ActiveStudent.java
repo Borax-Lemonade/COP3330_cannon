@@ -4,18 +4,19 @@ import java.util.ArrayList;
 
 import gradebook.Assignment;
 
-public class ActiveStudent {
-    private String studentId;
+public class ActiveStudent extends Student {
     private String tinderId;
-    private String name;
     private ArrayList<Assignment> assignments;
 
+    private boolean enrolled;
+
     public ActiveStudent(String studentId, String tinderId, String name) {
-        this.studentId = studentId;
+        super(studentId, name);
         this.tinderId = tinderId;
-        this.name = name;
 
         assignments = new ArrayList<>();
+
+        this.enrolled = true;
     }
 
     public void addAssignment(Assignment assignment) {

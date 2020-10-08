@@ -9,5 +9,6 @@ public class ConsoleGreeter {
     // This approach is okay because the object explicitly exists to greet using the console
     public void greet() {
         System.out.println(greeting);
+
     }
 }
