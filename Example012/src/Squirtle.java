@@ -1,22 +1,40 @@
-public class Squirtle extends WaterMonster implements  WaterMonsterBehavior {
+import java.security.SecureRandom;
+
+public class Squirtle extends WaterMonster {
+    private SecureRandom gen;
+    private int hitpoints;
+    private int attackPower;
+    private int armor;
+
     public Squirtle(int hitpoints) {
-        super(hitpoints);
+        super("Squirtle", 10);
+
+        gen = new SecureRandom();
+        gen.setSeed(42);
+
+        this.hitpoints = hitpoints;
+        this.attackPower = 100;
     }
 
-    @Override
-    public void attack() {
-        System.out.println("Squirtle attacks!");
+
+    public int attack(Squirtle otherMonster) {
+        int attackerDamage = gen.nextInt(attackPower);
+
+        System.out.printf("Squirtle attacks %s for %d damage!\n", otherMonster.getName(), attackerDamage);
+
+        return otherMonster.defend(attackerDamage);
     }
 
-    @Override
-    public void swim() {
-        System.out.println("Squirtle moves!");
+    public int getHitpoints() {
+        return hitpoints;
     }
 
-    @Override
-    public void defend() {
-        System.out.println("Squirtle defends!");
-        setHitpoints(getHitpoints() - 10);
+    public void setHitpoints(int value) {
+        hitpoints = value;
+    }
+
+    public void updateHitpoints(int adjustment) {
+        setHitpoints(getHitpoints() - adjustment);
         System.out.printf("Squirtle now has %d hitpoints left!\n", getHitpoints());
     }
 }

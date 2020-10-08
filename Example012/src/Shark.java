@@ -1,21 +1,39 @@
-public class Shark extends WaterMonster implements  WaterMonsterBehavior {
+import java.security.SecureRandom;
 
-    public Shark() {
-        super(100);
+public class Shark extends WaterMonster {
+    private SecureRandom gen;
+    private int hitpoints;
+    private int attackPower;
+    private int armor;
+
+    public Shark(int hitpoints) {
+        super("Shark", 10);
+
+        gen = new SecureRandom();
+        gen.setSeed(42);
+
+        this.hitpoints = hitpoints;
+        this.attackPower = 100;
     }
 
-    @Override
-    public void attack() {
-        System.out.println("Shark attacks!");
+    public int attack(WaterMonster otherMonster) {
+        int attackerDamage = gen.nextInt(attackPower);
+
+        System.out.printf("Squirtle attacks %s for %d damage!\n", otherMonster.getName(), attackerDamage);
+
+        return otherMonster.defend(attackerDamage);
     }
 
-    @Override
-    public void swim() {
-        System.out.println("Shark swims!");
+    public int getHitpoints() {
+        return hitpoints;
     }
 
-    @Override
-    public void defend() {
-        System.out.println("Shark defends!");
+    public void setHitpoints(int value) {
+        hitpoints = value;
+    }
+
+    public void updateHitpoints(int adjustment) {
+        setHitpoints(getHitpoints() - adjustment);
+        System.out.printf("Squirtle now has %d hitpoints left!\n", getHitpoints());
     }
 }

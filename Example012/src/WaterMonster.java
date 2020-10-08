@@ -1,19 +1,21 @@
 public abstract class WaterMonster {
-    protected int hitpoints;
-    private int mana;
     private int armor;
-    private int speed;
-    private int level;
 
-    public WaterMonster(int hitpoints) {
-        this.hitpoints = hitpoints;
+    private String name;
+
+    public WaterMonster(String name, int armor) {
+        this.name = name;
+        this.armor = armor;
     }
 
-    public int getHitpoints() {
-        return hitpoints;
+    public String getName() {
+        return name;
     }
 
-    public void setHitpoints(int value) {
-        hitpoints = value;
+    public int defend(int attackerDamage) {
+        int damageTaken = Math.max(attackerDamage - armor, 0);
+
+        System.out.printf("%s defends and takes %d hitpoints of damage!\n", name, damageTaken);
+        return damageTaken;
     }
 }

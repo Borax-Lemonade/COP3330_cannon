@@ -1,7 +1,9 @@
 public interface WaterMonsterBehavior {
-    void attack();
+    String getName();
+
+    void attack(WaterMonsterBehavior otherMonster);
 
     void swim();
 
-    void defend();
+    void defend(int attackerDamage);
 }
