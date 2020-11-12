@@ -19,8 +19,10 @@ public class FileExample {
 
     private static Scanner input = new Scanner(System.in);
 
-    private ArrayList<String> names = new ArrayList<>();
-    private ArrayList<String> grades = new ArrayList<>();
+    private ArrayList<StudentData> studentData = new ArrayList<>();
+
+    // the StudentDataManager is reponsible for writing student data to a file
+    private StudentDataManager sdManager;
 
     public static void main(String[] args) {
         FileExample m = new FileExample();
@@ -30,24 +32,24 @@ public class FileExample {
     public void processStudentGrades() {
         String continueResponse = askShouldContinue();
         while(shouldContinue(continueResponse)) {
-            String name = getStudentName();
-            String grade = getStudentGrade();
+            StudentData data = getStudentData();
 
-            storeStudentInfo(name, grade);
+            storeStudentData(data);
             continueResponse = askShouldContinue();
         }
 
-        writeStudentData(names, grades);
+        writeStudentData(studentData);
     }
 
     public boolean shouldContinue(String userInput) {
         return userInput.toLowerCase().startsWith("y");
     }
 
-    public void writeStudentData(ArrayList<String> names, ArrayList<String> grades) {
+    public void writeStudentData(ArrayList<StudentData> studentData) {
         try(Formatter output = new Formatter("studentData.txt")) {
-            for(int i = 0; i < names.size(); i++) {
-                output.format("%s;%s", names.get(i), grades.get(i));
+            for(int i = 0; i < studentData.size(); i++) {
+                StudentData data = studentData.get(i);
+                output.format("%s;%s%n", data.getName(), data.getGrade());
             }
 
         } catch (FileNotFoundException ex) {
@@ -57,52 +59,37 @@ public class FileExample {
         }
     }
 
-    public void storeStudentInfo(String name, String grade) {
-        names.add(name);
-        grades.add(grade);
+    public void storeStudentData(StudentData data) {
+        studentData.add(data);
     }
 
-    public String getStudentGrade() {
-        // ask the user to enter a student name until they enter a valid name
-        String grade = "";
-        while(true) {
-            System.out.println("Enter the student's grades:");
-            grade = input.nextLine();
 
-            // valid grades are A, B, C, D, F
-            if(isGradeValid(grade)) {
+    public StudentData getStudentData() {
+        StudentData data = null;
+        while(true) {
+            try {
+                String name = getStudentName();
+                String grade = getStudentGrade();
+
+                data = new StudentData(name, grade);
                 break;
+            } catch (InvalidNameException ex) {
+                System.out.println("Warning: your name was invalid, please double check it and try again");
+            } catch (InvalidGradeException ex) {
+                System.out.println("Warning: your grade was invalid, please double check it and try again");
             }
         }
-
-        return grade;
-    }
-
-    public boolean isGradeValid(String grade) {
-        return grade.equalsIgnoreCase("A") ||
-                grade.equalsIgnoreCase("B") ||
-                grade.equalsIgnoreCase("C") ||
-                grade.equalsIgnoreCase("D") ||
-                grade.equalsIgnoreCase("F");
+        return data;
     }
 
     public String getStudentName() {
-        // ask the user to enter a student name until they enter a valid name
-        String name = "";
-        while(true) {
-            System.out.println("Enter the student's name:");
-            name = input.nextLine();
-
-            // names are invalid if they are empty
-            if(isNameValid(name)) {
-                break;
-            }
-        }
-        return name;
+        System.out.println("Enter the student's name:");
+        return input.nextLine();
     }
 
-    public boolean isNameValid(String name) {
-        return name.length() > 0;
+    public String getStudentGrade() {
+        System.out.println("Enter the student's grades:");
+        return input.nextLine();
     }
 
     public static String askShouldContinue() {

@@ -3,6 +3,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class FileExampleTest {
+    /*
     @Test
     public void shouldContinueReturnsTrueWhenUserEntersYes() {
         FileExample m = new FileExample();
@@ -44,5 +45,7 @@ class FileExampleTest {
         FileExample m = new FileExample();
         assertEquals(true, m.isGradeValid("F"));
     }
+    */
+
 
 }
