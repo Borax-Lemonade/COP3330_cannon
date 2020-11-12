@@ -19,52 +19,37 @@ public class FileExample {
 
     private static Scanner input = new Scanner(System.in);
 
-    private ArrayList<StudentData> studentData = new ArrayList<>();
+    private StudentList students;
+    // Next we will create a more general GradeList and use it to let our program manage both
+    // StudentList and TeachList objects via polymorphism. 
 
-    // the StudentDataManager is reponsible for writing student data to a file
-    private StudentDataManager sdManager;
-
-    public static void main(String[] args) {
-        FileExample m = new FileExample();
-        m.processStudentGrades();
+    public FileExample() {
+        students = new StudentList();
     }
 
-    public void processStudentGrades() {
-        String continueResponse = askShouldContinue();
-        while(shouldContinue(continueResponse)) {
+    private void processStudentGrades() {
+        while(shouldContinue(askShouldContinue())) {
             StudentData data = getStudentData();
 
             storeStudentData(data);
-            continueResponse = askShouldContinue();
         }
 
-        writeStudentData(studentData);
+        writeStudentData();
     }
 
-    public boolean shouldContinue(String userInput) {
+    private boolean shouldContinue(String userInput) {
         return userInput.toLowerCase().startsWith("y");
     }
 
-    public void writeStudentData(ArrayList<StudentData> studentData) {
-        try(Formatter output = new Formatter("studentData.txt")) {
-            for(int i = 0; i < studentData.size(); i++) {
-                StudentData data = studentData.get(i);
-                output.format("%s;%s%n", data.getName(), data.getGrade());
-            }
-
-        } catch (FileNotFoundException ex) {
-            System.out.println("Unable to find the file...");
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+    private void writeStudentData() {
+        students.write("output.txt");
     }
 
-    public void storeStudentData(StudentData data) {
-        studentData.add(data);
+    private void storeStudentData(StudentData data) {
+        students.add(data);
     }
 
-
-    public StudentData getStudentData() {
+    private StudentData getStudentData() {
         StudentData data = null;
         while(true) {
             try {
@@ -82,21 +67,26 @@ public class FileExample {
         return data;
     }
 
-    public String getStudentName() {
+    private String getStudentName() {
         System.out.println("Enter the student's name:");
         return input.nextLine();
     }
 
-    public String getStudentGrade() {
+    private String getStudentGrade() {
         System.out.println("Enter the student's grades:");
         return input.nextLine();
     }
 
-    public static String askShouldContinue() {
+    private static String askShouldContinue() {
         System.out.println("Do you wish to enter student information? (y/n):");
         return input.nextLine();
     }
 
     // Write a program that allows the user to read in a file of student names and grades and
     // displays that information to the console.
+    public static void main(String[] args) {
+        FileExample m = new FileExample();
+
+        m.processStudentGrades();
+    }
 }
