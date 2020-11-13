@@ -21,7 +21,7 @@ public class FileExample {
 
     private StudentList students;
     // Next we will create a more general GradeList and use it to let our program manage both
-    // StudentList and TeachList objects via polymorphism. 
+    // StudentList and TeachList objects via polymorphism.
 
     public FileExample() {
         students = new StudentList();

@@ -5,22 +5,17 @@ import static org.junit.jupiter.api.Assertions.*;
 class StudentDataTest {
     @Test
     public void creatingStudentDataWithValidNameAndGradeSucceeds() {
-        StudentData sd = new StudentData("bob", "A");
-
-        assertEquals("bob", sd.getName());
-        assertEquals("A", sd.getGrade());
+        assertDoesNotThrow(() -> new StudentData("bob", "A"));
     }
 
     @Test
     public void creatingStudentDataWithValidNameAndAGradeSucceeds() {
-        StudentData sd = new StudentData("bob", "A");
-        assertEquals("A", sd.getGrade());
+        assertDoesNotThrow(() -> new StudentData("bob", "A"));
     }
 
     @Test
     public void creatingStudentDataWithValidNameAndBGradeSucceeds() {
-        StudentData sd = new StudentData("bob", "B");
-        assertEquals("A", sd.getGrade());
+        assertDoesNotThrow(() -> new StudentData("bob", "B"));
     }
 
    @Test
