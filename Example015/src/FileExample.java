@@ -1,3 +1,5 @@
+package Example015.src;
+
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Formatter;
@@ -73,6 +75,7 @@ public class FileExample {
     }
 
     private String getStudentGrade() {
+        System.out.println("Enter the student's grades:");
         System.out.println("Enter the student's grades:");
         return input.nextLine();
     }
