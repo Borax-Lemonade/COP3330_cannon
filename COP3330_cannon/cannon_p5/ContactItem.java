@@ -13,7 +13,7 @@ public class ContactItem {
             this.firstName = firstName;
         } else {
             //throw new IllegalArgumentException();
-            throw new InvalidTitleException("firstName is not valid; must be at least 1 character long");
+            throw new InvalidTitleException("firstNames is not valid; must be at least 1 character long");
         }
 
         if (isNameValid(lastName)) {

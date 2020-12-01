@@ -65,7 +65,7 @@ public class TaskItem {
         if(isTitleValid(title))
             this.title = title;
         else {
-            throw new InvalidTitleException("title is not valid; must be at least 1 character long");
+            throw new InvalidTitleException("titles is not valid; must be at least 1 character long");
         }
     }
 

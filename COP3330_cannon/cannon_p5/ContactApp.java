@@ -54,7 +54,7 @@ public class ContactApp {
                     "\n" +
                     "1) view the list\n" +
                     "2) add an item\n" +
-                    "3) edit an item\n" +
+                    "3) edit an items\n" +
                     "4) remove an item\n" +
                     "5) save the current list\n" +
                     "6) quit to the main menu\n");

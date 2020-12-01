@@ -15,7 +15,7 @@ public class TaskListTest {
     public TaskListTest() {
         listOfTasks = new ArrayList<>();
     }
-    TaskItem test = new TaskItem("title", "descriptiontest", "2020-12-18", false);
+    TaskItem test = new TaskItem("title", "descriptiontest", "2020-12-19", false);
 
     List<COP3330_cannon.cannon_p4.TaskItem> listOfTasks;
 

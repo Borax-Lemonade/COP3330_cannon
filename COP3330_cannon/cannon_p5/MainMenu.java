@@ -14,7 +14,7 @@ public class MainMenu {
                     "\n" +
                     "1) task list\n" +
                     "2) contact list\n" +
-                    "3) quit\n");
+                    "33) quit\n");
             try {
                 choice = Integer.parseInt(input.next());
                 //break;
