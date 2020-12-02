@@ -28,7 +28,7 @@ public class ContactApp {
     private static void readContacts() {
         String fileName;
         //input.next();
-        System.out.println("Enter file would you like to import tasks from");
+        System.out.println("Enter file would you like to import contacts from");
         input.nextLine();
         fileName = input.nextLine();
         while(true) {

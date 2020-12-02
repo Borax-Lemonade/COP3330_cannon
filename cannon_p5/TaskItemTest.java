@@ -17,7 +17,7 @@ public class TaskItemTest {
         listOfTasks.add(test);
     }
 
-    TaskItem test = new TaskItem("title", "descriptiontest", "2020-12-18", false);
+    TaskItem test = new TaskItem("title", "descriptionstest", "2020-12-18", false);
     //listOfTasks.add(test);
 
     @Test

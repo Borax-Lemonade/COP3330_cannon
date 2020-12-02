@@ -28,7 +28,7 @@ public class ContactItem {
             return true;
         }
         else {
-            throw new InvalidNameException("fucker");
+            throw new InvalidNameException("haha whoops");
         }
     }
     public boolean isNumberValid(String number) {

@@ -14,7 +14,7 @@ public class TaskListTest {
     public TaskListTest() {
         listOfTasks = new ArrayList<>();
     }
-    TaskItem test = new TaskItem("title", "descriptiontest", "2020-12-18", false);
+    TaskItem test = new TaskItem("title", "descriptionstest", "2020-12-18", false);
 
     List<TaskItem> listOfTasks;
 

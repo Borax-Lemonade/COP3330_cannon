@@ -22,7 +22,7 @@ public class ContactItemTest {
     @Test
     public void creationSucceedsWithBlankEmail() {
         //test = new ContactItem("rebecca", "cannon", "321-321-3211", "");
-        assertDoesNotThrow(() -> new ContactItem("rebecca", "cannon", "321-321-3211", ""));
+        assertDoesNotThrow(() -> new ContactItem("rebecca", "cannon", "321-321-3212", ""));
         //assertNotNull(test);
     }
 

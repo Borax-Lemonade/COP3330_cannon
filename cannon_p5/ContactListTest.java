@@ -33,7 +33,7 @@ public class ContactListTest {
 
     @Test
     public void editingSucceedsWithBlankEmail() {
-        assertDoesNotThrow(() -> listOfContacts.editItem("rebecca", "cannon", "321-321-3211", ""));
+        assertDoesNotThrow(() -> listOfContacts.editItem("rebecca", "cannons", "321-321-3211", ""));
     }
 
     @Test

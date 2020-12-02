@@ -93,7 +93,7 @@ public class ContactList {
             }
 
         } catch (FileNotFoundException ex) {
-            System.out.println("Unsable to find the file...");
+            System.out.println("Unable to find the file...");
         } catch (Exception ex) {
             //ex.printStackTrace();
         }
