@@ -6,13 +6,13 @@ public class MainMenu {
 
     static Scanner input = new Scanner(System.in);
 
-    public static void selectAppplication() {
+    public static void selectApplication() {
         int choice = 0;
         do {
             System.out.println("Select Your Application\n" +
                     "-----------------------\n" +
                     "\n" +
-                    "1) task list\n" +
+                    "1) task lists\n" +
                     "2) contact list\n" +
                     "3) quit\n");
             try {
@@ -39,6 +39,6 @@ public class MainMenu {
         }while(choice != 3);
     }
     public static void main(String[] args) {
-        selectAppplication();
+        selectApplication();
     }
 }

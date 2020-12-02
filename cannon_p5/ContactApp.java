@@ -54,7 +54,7 @@ public class ContactApp {
                     "\n" +
                     "1) view the list\n" +
                     "2) add an item\n" +
-                    "3) edit an item\n" +
+                    "3) edit an items\n" +
                     "4) remove an item\n" +
                     "5) save the current list\n" +
                     "6) quit to the main menu\n");
@@ -106,27 +106,43 @@ public class ContactApp {
 
     public static ContactItem editContactItem(int index) {
         ContactItem data = listOfContacts.get(index);
-        //ContactItem temp;
+        ContactItem temp = listOfContacts.get(index);
+        String firstName, lastName, phoneNumber, email;
         input.nextLine();
-        while(true) {
             try {
                 System.out.println("Enter new first name");
-                listOfContacts.get(index).setFirstName(input.nextLine());
+                //temp.setFirstName(input.nextLine());
+                firstName = input.nextLine();
                 System.out.println("Enter new last name");
-                listOfContacts.get(index).setLastName(input.nextLine());
+                //temp.setLastName(input.nextLine());
+                lastName = input.nextLine();
                 System.out.println("Enter new phone number(xxx-xxx-xxxx)");
-                listOfContacts.get(index).setPhoneNumber(input.nextLine());
+                //temp.setPhoneNumber(input.nextLine());
+                phoneNumber = input.nextLine();
                 System.out.println("Enter a new email.");
-                listOfContacts.get(index).setEmail(input.nextLine());
-
-                //temp = new TaskItem(title, description, date, isCompleted);
-                break;
+                //temp.setEmail(input.nextLine());
+                email = input.nextLine();
+                if (listOfContacts.editItem(firstName, lastName, phoneNumber, email)) {
+                    temp.setFirstName(firstName);
+                    temp.setLastName(lastName);
+                    temp.setPhoneNumber(phoneNumber);
+                    temp.setEmail(email);
+                }
+                else{
+                    System.out.println("All fields cannot be null; contact not created");
+                    data = null;
+                    throw new InvalidItemException("bruh");
+                }
             } catch (InvalidNameException ex) {
-                System.out.println("Warning: task not created: Title must be at least one character ");
+
             } catch (PhoneNumberException ex) {
-                System.out.println("Warning: task not created: Date must a valid yyyy-mm-dd");
+               // System.out.println("Warning: task not created: Date must a valid yyyy-mm-dd");
+            } catch (InvalidEmailException ex) {
+                //
             }
-        }
+            catch (InvalidItemException ex) {
+
+            }
         return data;
     }
 

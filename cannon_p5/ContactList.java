@@ -25,36 +25,34 @@ public class ContactList {
                 String number = getContactNumber();
                 String email = getContactEmail();
 
-                if (firstName.equals(null) && lastName.equals(null) && number.equals(null) && email.equals(null)) {
+                if (firstName.equals("") && lastName.equals("") && number.equals("") && email.equals("")) {
                     System.out.println("All fields cannot be null; contact not created");
-                    return null;
+                    data = null;
+                    throw new InvalidItemException("brushsdf");
                 }
                 else
                     data = new ContactItem(firstName, lastName, number, email);
 
-            } catch (InvalidNameException ex) {
-                //System.out.println("Warning: task not created: Title must be at least one character ");
-            } catch (PhoneNumberException ex) {
-                //System.out.println("Warning: task not created: number must be in xxx-xxx-xxxx format");
-            } catch (InvalidEmailException ex) {
-                //System.out.println("idek");
+            } catch (InvalidItemException ex) {
+                System.out.println("All fields cannot be null");
             }
         return data;
     }
-
-
 
     public static void processTaskItems() {
         //input.nextLine();
         ContactItem data = getContactItem();
 
-        storeTaskData(data);
-    }
-    protected static void storeTaskData(ContactItem data) {
-        listOfContacts.add(data);
+        add(data);
     }
 
-    public void add(ContactItem data) {listOfContacts.add(data);}
+    public static boolean editItem(String fname, String lname, String pNumber, String email) throws InvalidItemException {
+        if(fname.equals("") && lname.equals("") && pNumber.equals("") && email.equals(""))
+            throw new InvalidItemException("I-");
+        else
+            return true;
+    }
+    public static void add(ContactItem data) {listOfContacts.add(data);}
 
     public void remove(int index) {listOfContacts.remove(index);}
 
@@ -76,10 +74,9 @@ public class ContactList {
 
                 data = new ContactItem(temp[0], temp[1], temp[2], temp[3]);
 
-                listOfContacts.add(data);
+                add(data);
             }
-        } catch (IOException | NoSuchElementException |
-                IllegalStateException e) {
+        } catch (IOException | NoSuchElementException | IllegalStateException | InvalidItemException e) {
             System.out.println("Error reading file.");
         }
 
@@ -92,11 +89,11 @@ public class ContactList {
 
             for(int i = 0; i < listOfContacts.size(); i++) {
                 ContactItem data = listOfContacts.get(i);
-                output.format("%s, %s, %s, %s\n", data.getFirstName(), data.getLastName(), data.getPhoneNumber(), data.getEmail());
+                output.format(data.toString());
             }
 
         } catch (FileNotFoundException ex) {
-            System.out.println("Unable to find the file...");
+            System.out.println("Unsable to find the file...");
         } catch (Exception ex) {
             //ex.printStackTrace();
         }

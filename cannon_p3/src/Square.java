@@ -1,3 +1,5 @@
+package COP3330_cannon.cannon_p3.src;
+
 public class Square extends Shape2D {
 
     private double side;

@@ -1,4 +1,4 @@
-package COP3330_cannon.cannon_p4;
+package COP3330_cannon.cannon_p5;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -21,32 +21,22 @@ public class TaskItem {
             throw new InvalidTitleException("title is not valid; must be at least 1 character long");
         }
 
-        if (isDescriptionValid(description)) {
-            this.description = description;
-        } else {
-            //throw new IllegalArgumentException();
-            throw new InvalidDescriptionException("description is not valid; must be at least 1 character long");
-        }
+        this.description = description;
 
         if(isDateValid(date)) {
             this.date = date;
         } else {
             //throw new IllegalArgumentException();
-            throw new DateTimeException("Please enter a valid yyyy-mm-dd date");
+            throw new PhoneNumberException("Please enter a valid yyyy-mm-dd date");
         }
         this.isCompleted = false;
     }
-    application app = new application();
+    TaskApp app = new TaskApp();
 
 
     public boolean isTitleValid(String title) {
 
         return title.length() > 0;
-    }
-
-    public boolean isDescriptionValid(String description) {
-        return description.length() > 0;
-        //return false;
     }
 
     private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-M-d");
@@ -60,7 +50,7 @@ public class TaskItem {
                     .isBefore(LocalDate.now());
             return true;
         }
-        catch (DateTimeParseException | DateTimeException e) {
+        catch (DateTimeParseException | PhoneNumberException e) {
             System.out.println("Enter a valid date");
             return false;
         }
@@ -83,11 +73,7 @@ public class TaskItem {
         return this.description;
     }
     public void setDescription(String description)  {
-        if(isDescriptionValid(description))
-            this.description = description;
-        else {
-            throw new InvalidDescriptionException("description is not valid; must be at least 1 character long");
-        }
+        this.description = description;
     }
 
     public String getDate() {
@@ -98,7 +84,7 @@ public class TaskItem {
         if (isDateValid(date))
             this.date = date;
         else
-            throw new DateTimeException("broski");
+            throw new PhoneNumberException("broski");
     }
 
     public Boolean getIsCompleted() {
@@ -112,12 +98,6 @@ public class TaskItem {
 
 class InvalidTitleException extends IllegalArgumentException {
         public InvalidTitleException(String msg) {
-            super(msg);
-        }
-}
-
-class InvalidDescriptionException extends IllegalArgumentException {
-        public InvalidDescriptionException(String msg) {
             super(msg);
         }
 }

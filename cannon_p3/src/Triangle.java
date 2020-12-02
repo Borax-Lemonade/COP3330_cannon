@@ -1,3 +1,5 @@
+package COP3330_cannon.cannon_p3.src;
+
 public class Triangle extends Shape2D{
     private double base, height;
     //private String name;

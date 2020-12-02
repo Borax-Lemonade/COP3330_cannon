@@ -174,7 +174,7 @@ public class TaskApp {
     protected static String getTaskTitle() {
         String title;
         //input.nextLine();
-        System.out.println("Enter task title");
+        System.out.println("Enter task titles");
         return input.nextLine();
     }
 

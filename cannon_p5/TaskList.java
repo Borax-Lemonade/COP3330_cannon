@@ -28,7 +28,7 @@ public class TaskList extends TaskApp {
                 data = new TaskItem(title, description, date, isCompleted);
                 break;
             } catch (InvalidTitleException ex) {
-                System.out.println("Warning: task not created: Title must be at least one character ");
+                System.out.println("Warning: tasks not created: Title must be at least one character ");
             }catch (DateTimeException ex) {
                 System.out.println("Warning: task not created: date must be in yyyy-mm-dd format");
             }

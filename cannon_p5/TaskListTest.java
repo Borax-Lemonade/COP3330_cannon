@@ -1,6 +1,5 @@
 package COP3330_cannon.cannon_p5;
 
-import COP3330_cannon.cannon_p4.TaskItem;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -9,7 +8,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-//import static class TaskItem{String, String, String, Boolean};
+//import static class TaskItem{String, String, String, Boolean};sv
 public class TaskListTest {
 
     public TaskListTest() {
@@ -17,7 +16,7 @@ public class TaskListTest {
     }
     TaskItem test = new TaskItem("title", "descriptiontest", "2020-12-18", false);
 
-    List<COP3330_cannon.cannon_p4.TaskItem> listOfTasks;
+    List<TaskItem> listOfTasks;
 
     @Test
     public void creatingTaskItemFailsWithInvalidDueDate(){
@@ -43,6 +42,7 @@ public class TaskListTest {
     public void settingTaskItemDueDateSucceedsWithValidDate() {
         assertDoesNotThrow(() ->test.setDate("2021-03-09"));
     }
+
     @Test
     public void settingTaskItemTitleFailsWithInvalidTitle() {
         assertThrows(InvalidTitleException.class, () -> test.setTitle(""));
